@@ -1,10 +1,14 @@
 import React from 'react'
+import HeapWindow from '../components/HeapWindow';
+import MemoryMap from '../components/MemoryMap';
 
 function App() {
   return (
-    <div>
-
-    </div>
+    <main>
+      <HeapWindow title="Memory map">
+        <MemoryMap />
+      </HeapWindow>
+    </main>
   )
 }
 

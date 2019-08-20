@@ -1,0 +1,10 @@
+.heap-window {
+  border: solid 1px white;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.heap-window-title-bar {
+  padding: 2px 4px;
+  border-bottom: solid 1px white;
+}
