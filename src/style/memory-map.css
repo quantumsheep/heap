@@ -1,0 +1,14 @@
+.memory-map {
+  border-collapse: collapse;
+}
+
+.memory-map-row td {
+  cursor: pointer;
+  text-align: center;
+  padding: 4px;
+}
+
+.memory-map-row td:hover {
+  background-color: white;
+  color: black;
+}
