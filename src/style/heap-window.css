@@ -8,4 +8,5 @@
 .heap-window-title-bar {
   padding: 2px 4px;
   border-bottom: solid 1px white;
+  user-select: none;
 }
