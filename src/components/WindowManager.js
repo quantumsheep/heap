@@ -1,5 +1,4 @@
 import React from 'react'
-import '../style/window-manager.css'
 
 class WindowManager extends React.Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class WindowManager extends React.Component {
 
   render() {
     return (
-      <div className="window-manager">
+      <div>
         {React.Children.map(this.props.children, child => React.cloneElement(child, {
           incrementIndex: this.incrementIndex,
           getMaxIndex: this.getMaxIndex,

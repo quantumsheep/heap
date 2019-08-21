@@ -4,6 +4,7 @@
   border-radius: 2px;
   display: inline-block;
   position: absolute;
+  max-width: 500px;
 }
 
 .heap-window-title-bar {
