@@ -1,12 +1,13 @@
 .desktop-icon {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   text-align: center;
   padding: 5px;
-  margin: 10px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
   border: solid 1px transparent;
+  font-size: 14px;
 }
 
 .desktop-icon:hover {
