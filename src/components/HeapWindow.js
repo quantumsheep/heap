@@ -3,8 +3,13 @@ import '../style/heap-window.css'
 
 import Draggable from 'react-draggable'
 
+import CloseButton from './CloseButton'
+
 class HeapWindow extends React.Component {
   static defaultProps = {
+    dataKey: null,
+    onClose: (e, key) => { },
+
     title: "Window",
     incrementIndex: () => { },
     getMaxIndex: () => { return 0 },
@@ -29,10 +34,15 @@ class HeapWindow extends React.Component {
   componentDidMount() {
     this.setState({
       position: {
-        x: (document.body.clientWidth / 2) - (this.reference.current.clientWidth / 2),
-        y: (document.body.clientHeight / 2) - (this.reference.current.clientHeight / 2),
-      }
+        x: (document.body.clientWidth / 2) - (this.reference.current.clientWidth / 2) + (this.state.zindex * 10),
+        y: (document.body.clientHeight / 2) - (this.reference.current.clientHeight / 2) + (this.state.zindex * 10),
+      },
     })
+  }
+
+  onClose = (e, key) => {
+    e.preventDefault()
+    this.props.onClose(e, key)
   }
 
   onDrag = (e, position) => {
@@ -52,14 +62,19 @@ class HeapWindow extends React.Component {
   render() {
     return (
       <Draggable
-        handle=".heap-window-title-bar"
+        handle=".heap-window-title-title"
         bounds="body"
         onStart={this.setOnTop}
         position={this.state.position}
         onDrag={this.onDrag}
       >
         <div ref={this.reference} className="heap-window" style={{ zIndex: this.state.zindex }}>
-          <div className="heap-window-title-bar">{this.props.title}</div>
+          <div className="heap-window-title-bar">
+            <div className="heap-window-title-title">{this.props.title}</div>
+            <div className="heap-window-title-buttons">
+              <CloseButton className="heap-window-title-buttons-close" onClick={e => this.onClose(e, this.props.dataKey)} />
+            </div>
+          </div>
           <div onMouseDown={this.setOnTop}>{this.props.children}</div>
         </div>
       </Draggable>

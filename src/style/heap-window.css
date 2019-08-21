@@ -10,4 +10,26 @@
   padding: 2px 4px;
   border-bottom: solid 1px white;
   user-select: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.heap-window-title-title {
+  padding-right: 30px;
+  flex: 1;
+}
+
+.heap-window-title-buttons > * {
+  height: 12px;
+  width: auto;
+  fill: white;
+  transition: all 0.2s;
+}
+
+.heap-window-title-buttons > *:hover {
+  cursor: pointer;
+}
+
+.heap-window-title-buttons-close:hover {
+  fill: red;
 }
