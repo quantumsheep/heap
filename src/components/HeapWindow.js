@@ -1,7 +1,7 @@
 import React from 'react'
 import '../style/heap-window.css'
 
-import Draggable, { DraggableCore } from 'react-draggable'
+import Draggable from 'react-draggable'
 
 class HeapWindow extends React.Component {
   static defaultProps = {
