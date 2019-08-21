@@ -13,17 +13,21 @@ class HeapWindow extends React.Component {
   constructor(props) {
     super(props)
 
+    this.props.incrementIndex()
+
     this.state = {
-      zindex: this.props.getMaxIndex() + 1,
+      zindex: this.props.getMaxIndex(),
     }
   }
 
   setOnTop = () => {
-    this.props.incrementIndex()
+    if (this.state.zindex !== this.props.getMaxIndex()) {
+      this.props.incrementIndex()
 
-    this.setState({
-      zindex: this.props.getMaxIndex() + 1
-    })
+      this.setState({
+        zindex: this.props.getMaxIndex()
+      })
+    }
   }
 
   render() {
