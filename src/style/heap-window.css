@@ -3,6 +3,7 @@
   border: solid 1px white;
   border-radius: 2px;
   display: inline-block;
+  position: absolute;
 }
 
 .heap-window-title-bar {
