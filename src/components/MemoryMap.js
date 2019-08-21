@@ -1,6 +1,6 @@
 import React from 'react'
 import '../style/memory-map.css'
-import range from '../utils/range';
+import range from '../utils/range'
 
 class MemoryMap extends React.Component {
   static defaultProps = {

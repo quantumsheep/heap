@@ -1,7 +1,7 @@
 import React from 'react'
-import WindowManager from '../components/WindowManager';
-import HeapWindow from '../components/HeapWindow';
-import MemoryMap from '../components/MemoryMap';
+import WindowManager from '../components/WindowManager'
+import HeapWindow from '../components/HeapWindow'
+import MemoryMap from '../components/MemoryMap'
 
 function App() {
   return (
