@@ -1,0 +1,22 @@
+.desktop-icon {
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.desktop-icon .desktop-icon-image {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex: 1;
+}
+
+.desktop-icon .desktop-icon-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 5px;
+}
