@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100vh;
+}
+
 main {
   height: 100vh;
   overflow: hidden;
