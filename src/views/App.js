@@ -13,8 +13,26 @@ class App extends React.Component {
     super(props)
 
     this.state = {
+      /** @type {HeapWindow[]} */
       windows: [],
     }
+  }
+
+  /**
+   * @param {string} title 
+   * @param {JSX.Element} body 
+   */
+  createWindow = (title, body) => {
+    const windows = this.state.windows
+    const key = 'window-' + windows.length
+
+    windows.push((
+      <HeapWindow title={title} key={key} dataKey={key} onClose={this.closeWindow}>
+        {body}
+      </HeapWindow>
+    ))
+
+    this.setState({ windows })
   }
 
   closeWindow = (e, key) => {
@@ -23,18 +41,9 @@ class App extends React.Component {
     })
   }
 
-  openInternet = () => {
-    const windows = this.state.windows
-    const key = 'window-' + windows.length
-
-    windows.push((
-      <HeapWindow title="Internet" key={key} dataKey={key} onClose={this.closeWindow}>
-        <div>Welcome to the Internet</div>
-      </HeapWindow>
-    ))
-
-    this.setState({ windows })
-  }
+  openInternet = () => this.createWindow('Internet', (
+    <div>Welcome, this is the readme file!</div>
+  ))
 
   render() {
     return (
