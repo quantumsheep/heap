@@ -39,7 +39,7 @@ class HeapWindow extends React.Component {
       >
         <div className="heap-window" style={{ zIndex: this.state.zindex }}>
           <div className="heap-window-title-bar">{this.props.title}</div>
-          <div>{this.props.children}</div>
+          <div onMouseDown={this.setOnTop}>{this.props.children}</div>
         </div>
       </Draggable>
     )
