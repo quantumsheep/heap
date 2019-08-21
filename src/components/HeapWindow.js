@@ -5,6 +5,8 @@ import Draggable from 'react-draggable'
 
 import CloseButton from './CloseButton'
 
+import rand from '../utils/rand'
+
 class HeapWindow extends React.Component {
   static defaultProps = {
     dataKey: null,
@@ -32,10 +34,12 @@ class HeapWindow extends React.Component {
   }
 
   componentDidMount() {
+    const OFFSET = 150
+
     this.setState({
       position: {
-        x: (document.body.clientWidth / 2) - (this.reference.current.clientWidth / 2) + (this.state.zindex * 10),
-        y: (document.body.clientHeight / 2) - (this.reference.current.clientHeight / 2) + (this.state.zindex * 10),
+        x: (document.body.clientWidth / 2) - (this.reference.current.clientWidth / 2) + (rand(-OFFSET, OFFSET)),
+        y: (document.body.clientHeight / 2) - (this.reference.current.clientHeight / 2) + (rand(-OFFSET, OFFSET)),
       },
     })
   }
