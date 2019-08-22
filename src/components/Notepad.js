@@ -5,7 +5,7 @@ class Notepad extends React.Component {
   render() {
     return (
       <div className="notepad">
-        <textarea spellcheck="false"></textarea>
+        <textarea spellCheck={false}></textarea>
       </div>
     )
   }
