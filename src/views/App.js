@@ -6,9 +6,13 @@ import DesktopFiles from '../components/DesktopFiles'
 import DesktopIcon from '../components/DesktopIcon'
 import WindowManager from '../components/WindowManager'
 import HeapWindow from '../components/HeapWindow'
+import Notepad from '../components/Notepad'
+import Directory from '../components/Directory'
 
 import internet_icon from '../ressources/icons/internet.png'
 import textfile_icon from '../ressources/icons/textfile.png'
+import directory_icon from '../ressources/icons/directory.png'
+import notepad_icon from '../ressources/icons/notepad.png'
 
 import file_readme from '../files/README.md'
 
@@ -62,6 +66,14 @@ class App extends React.Component {
     )
   }
 
+  notepad = async () => {
+    return <Notepad></Notepad>
+  }
+
+  directory = async () => {
+    return <Directory></Directory>
+  }
+
   render() {
     return (
       <main>
@@ -71,6 +83,8 @@ class App extends React.Component {
         <DesktopFiles>
           <DesktopIcon icon={internet_icon} title="Internet" onClick={() => this.createWindow("Internet", this.internet)} />
           <DesktopIcon icon={textfile_icon} title="README" onClick={() => this.createWindow("README", this.readme, { width: 500, height: 600 })} />
+          <DesktopIcon icon={notepad_icon} title="Notepad" onClick={() => this.createWindow("Notepad", this.notepad)} />
+          <DesktopIcon icon={directory_icon} title="Directory" onClick={() => this.createWindow("Directory", this.directory)} />
         </DesktopFiles>
       </main>
     )
