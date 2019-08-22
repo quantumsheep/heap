@@ -14,6 +14,8 @@ class DesktopSelection extends React.Component {
       },
       capturing: 0,
     }
+
+    this.mouseMoveEvent = null;
   }
 
   /**
@@ -21,6 +23,8 @@ class DesktopSelection extends React.Component {
    */
   startCapture = e => {
     e.preventDefault()
+
+    document.addEventListener('mousemove', this.onMouseMove)
 
     this.setState({
       capturing: 1,
@@ -32,6 +36,8 @@ class DesktopSelection extends React.Component {
    */
   stopCapture = e => {
     e.preventDefault()
+
+    document.removeEventListener('mousemove', this.onMouseMove)
 
     this.setState({
       capturing: false,
@@ -51,8 +57,8 @@ class DesktopSelection extends React.Component {
     if (this.state.capturing === 1) {
       const position = this.state.position
 
-      position.startX = e.pageX - e.currentTarget.offsetLeft
-      position.startY = e.pageY - e.currentTarget.offsetTop
+      position.startX = e.pageX
+      position.startY = e.pageY
       position.endX = position.startX
       position.endY = position.startY
 
@@ -63,8 +69,8 @@ class DesktopSelection extends React.Component {
     } else if (this.state.capturing === 2) {
       const position = this.state.position
 
-      position.endX = e.pageX - e.currentTarget.offsetLeft
-      position.endY = e.pageY - e.currentTarget.offsetTop
+      position.endX = e.pageX
+      position.endY = e.pageY
 
       this.setState({ position })
     }
@@ -95,7 +101,7 @@ class DesktopSelection extends React.Component {
     }
 
     return (
-      <div {...others} style={{ height: '100%' }} onMouseDown={this.startCapture} onMouseUp={this.stopCapture} onMouseMove={this.onMouseMove}>
+      <div {...others} style={{ height: '100%' }} onMouseDown={this.startCapture} onMouseUp={this.stopCapture}>
         {this.props.children}
         <div
           className="desktop-selection"
