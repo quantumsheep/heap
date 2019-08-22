@@ -8,8 +8,12 @@ import CloseButton from './CloseButton'
 
 import rand from '../utils/rand'
 
+import default_icon from '../ressources/icons/default.png'
+
 class HeapWindow extends React.Component {
   static defaultProps = {
+    icon: default_icon,
+
     dataKey: null,
     onClose: (e, key) => { },
 
@@ -22,6 +26,10 @@ class HeapWindow extends React.Component {
 
   constructor(props) {
     super(props)
+
+    if (!props.icon) {
+      props.icon = default_icon
+    }
 
     /** @type {Resizable} */
     this.reference = null;
@@ -130,6 +138,7 @@ class HeapWindow extends React.Component {
           maxWidth="100%"
         >
           <div className="heap-window-title-bar">
+            <img className="heap-window-title-icon" alt={this.props.title} src={this.props.icon} />
             <div className="heap-window-title-title">{this.props.title}</div>
             <div className="heap-window-title-buttons">
               <CloseButton className="heap-window-title-buttons-close" onClick={e => this.onClose(e, this.props.dataKey)} />

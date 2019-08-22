@@ -16,19 +16,26 @@
   justify-content: space-between;
 }
 
+.heap-window-title-icon {
+  width: auto;
+  height: 100%;
+  padding: 3px;
+  padding-right: 7px;
+}
+
 .heap-window-title-title {
   padding-right: 30px;
   flex: 1;
 }
 
-.heap-window-title-buttons > * {
+.heap-window-title-buttons>* {
   height: 12px;
   width: auto;
   fill: white;
   transition: all 0.2s;
 }
 
-.heap-window-title-buttons > *:hover {
+.heap-window-title-buttons>*:hover {
   cursor: pointer;
 }
 
