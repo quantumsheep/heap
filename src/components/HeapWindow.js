@@ -149,11 +149,11 @@ class HeapWindow extends React.Component {
           </div>
           <div className="heap-window-control">
             {
-              this.props.control.map(control => (
-                <HeapWindowControlDropdown title={control.title}>
+              this.props.control.map((control, i) => (
+                <HeapWindowControlDropdown key={`control-${i}`} title={control.title}>
                   {
-                    control.children.map(child => (
-                      <HeapWindowControlButton title={child.title} onClick={child.onClick || (() => { })} />
+                    control.children.map((child, j) => (
+                      <HeapWindowControlButton key={`control-${i}-${j}`} title={child.title} onClick={child.onClick || (() => { })} />
                     ))
                   }
                 </HeapWindowControlDropdown>
