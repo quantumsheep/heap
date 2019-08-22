@@ -98,6 +98,28 @@ class App extends React.Component {
                   },
                 ],
               },
+              {
+                title: 'Edit',
+                children: [
+                  {
+                    title: 'Cancel',
+                    onClick: () => { },
+                  },
+                ],
+              },
+              {
+                title: 'Help',
+                children: [
+                  {
+                    title: 'How to use',
+                    onClick: () => { },
+                  },
+                  {
+                    title: 'About',
+                    onClick: () => { },
+                  },
+                ],
+              },
             ])}
           />
           <DesktopIcon icon={directory_icon} title="Directory" onClick={() => this.createWindow(directory_icon, "Directory", this.directory)} />
