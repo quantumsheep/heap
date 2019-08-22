@@ -160,7 +160,7 @@ class HeapWindow extends React.Component {
               ))
             }
           </div>
-          <div onMouseDown={this.setOnTop} class="heap-window-body">{this.props.children}</div>
+          <div onMouseDown={this.setOnTop} className="heap-window-body">{this.props.children}</div>
         </Resizable>
       </Draggable >
     )
