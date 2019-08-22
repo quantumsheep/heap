@@ -30,16 +30,17 @@ class App extends React.Component {
    * @param {string} icon 
    * @param {string} title 
    * @param {() => Promise<JSX.Element>} body 
+   * @param {{ title: string, children: { title: string, onClick: () => void }[] }[]} control 
    * @param {object} size 
    * @param {number} size.width 
    * @param {number} size.height 
    */
-  createWindow = async (icon, title, body, size = {}) => {
+  createWindow = async (icon, title, body, control = [], size = {}) => {
     const windows = this.state.windows
     const key = 'window-' + windows.length
 
     windows.push((
-      <HeapWindow icon={icon} title={title} key={key} dataKey={key} defaultSize={size} onClose={this.closeWindow}>
+      <HeapWindow icon={icon} title={title} control={control} key={key} dataKey={key} defaultSize={size} onClose={this.closeWindow}>
         {await body()}
       </HeapWindow>
     ))
@@ -83,8 +84,22 @@ class App extends React.Component {
         </WindowManager>
         <DesktopFiles>
           <DesktopIcon icon={internet_icon} title="Internet" onClick={() => this.createWindow(internet_icon, "Internet", this.internet)} />
-          <DesktopIcon icon={textfile_icon} title="README" onClick={() => this.createWindow(textfile_icon, "README", this.readme, { width: 500, height: 600 })} />
-          <DesktopIcon icon={notepad_icon} title="Notepad" onClick={() => this.createWindow(notepad_icon, "Notepad", this.notepad)} />
+          <DesktopIcon icon={textfile_icon} title="README" onClick={() => this.createWindow(textfile_icon, "README", this.readme, [], { width: 500, height: 600 })} />
+          <DesktopIcon
+            icon={notepad_icon}
+            title="Notepad"
+            onClick={() => this.createWindow(notepad_icon, "Notepad", this.notepad, [
+              {
+                title: 'File',
+                children: [
+                  {
+                    title: 'New file',
+                    onClick: () => console.log('Creating new file...'),
+                  },
+                ],
+              },
+            ])}
+          />
           <DesktopIcon icon={directory_icon} title="Directory" onClick={() => this.createWindow(directory_icon, "Directory", this.directory)} />
         </DesktopFiles>
       </main>

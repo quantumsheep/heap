@@ -5,6 +5,8 @@ import Draggable from 'react-draggable'
 import { Resizable } from 're-resizable'
 
 import CloseButton from './CloseButton'
+import HeapWindowControlDropdown from './HeapWindowControlDropdown'
+import HeapWindowControlButton from './HeapWindowControlButton'
 
 import rand from '../utils/rand'
 
@@ -22,6 +24,7 @@ class HeapWindow extends React.Component {
     getMaxIndex: () => { return 0 },
 
     defaultSize: {},
+    control: [],
   }
 
   constructor(props) {
@@ -143,6 +146,19 @@ class HeapWindow extends React.Component {
             <div className="heap-window-title-buttons">
               <CloseButton className="heap-window-title-buttons-close" onClick={e => this.onClose(e, this.props.dataKey)} />
             </div>
+          </div>
+          <div className="heap-window-control">
+            {
+              this.props.control.map(control => (
+                <HeapWindowControlDropdown title={control.title}>
+                  {
+                    control.children.map(child => (
+                      <HeapWindowControlButton title={child.title} onClick={child.onClick || (() => { })} />
+                    ))
+                  }
+                </HeapWindowControlDropdown>
+              ))
+            }
           </div>
           <div onMouseDown={this.setOnTop} class="heap-window-body">{this.props.children}</div>
         </Resizable>
