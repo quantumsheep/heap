@@ -135,7 +135,7 @@ class HeapWindow extends React.Component {
               <CloseButton className="heap-window-title-buttons-close" onClick={e => this.onClose(e, this.props.dataKey)} />
             </div>
           </div>
-          <div onMouseDown={this.setOnTop}>{this.props.children}</div>
+          <div onMouseDown={this.setOnTop} class="heap-window-body">{this.props.children}</div>
         </Resizable>
       </Draggable >
     )

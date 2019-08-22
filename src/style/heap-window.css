@@ -2,11 +2,13 @@
   background-color: black;
   border: solid 1px white;
   border-radius: 2px;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   position: absolute !important;
 }
 
 .heap-window-title-bar {
+  height: 26px;
   padding: 2px 4px;
   border-bottom: solid 1px white;
   user-select: none;
@@ -32,4 +34,8 @@
 
 .heap-window-title-buttons-close:hover {
   fill: red;
+}
+
+.heap-window-body {
+  flex: 1;
 }
