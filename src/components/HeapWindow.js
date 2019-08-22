@@ -16,6 +16,8 @@ class HeapWindow extends React.Component {
     title: "Window",
     incrementIndex: () => { },
     getMaxIndex: () => { return 0 },
+
+    defaultSize: {},
   }
 
   constructor(props) {
@@ -122,10 +124,7 @@ class HeapWindow extends React.Component {
           className="heap-window"
           style={{ zIndex: this.state.zindex }}
           onResize={this.onResize}
-          defaultSize={{
-            width: 500,
-            height: 750,
-          }}
+          defaultSize={this.props.defaultSize}
           minWidth={350}
           minHeight={200}
           maxWidth="100%"

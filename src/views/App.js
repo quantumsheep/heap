@@ -25,13 +25,16 @@ class App extends React.Component {
   /**
    * @param {string} title 
    * @param {() => Promise<JSX.Element>} body 
+   * @param {object} size 
+   * @param {number} size.width 
+   * @param {number} size.height 
    */
-  createWindow = async (title, body) => {
+  createWindow = async (title, body, size = {}) => {
     const windows = this.state.windows
     const key = 'window-' + windows.length
 
     windows.push((
-      <HeapWindow title={title} key={key} dataKey={key} onClose={this.closeWindow}>
+      <HeapWindow title={title} key={key} dataKey={key} defaultSize={size} onClose={this.closeWindow}>
         {await body()}
       </HeapWindow>
     ))
@@ -67,7 +70,7 @@ class App extends React.Component {
         </WindowManager>
         <DesktopFiles>
           <DesktopIcon icon={internet_icon} title="Internet" onClick={() => this.createWindow("Internet", this.internet)} />
-          <DesktopIcon icon={textfile_icon} title="README" onClick={() => this.createWindow("README", this.readme)} />
+          <DesktopIcon icon={textfile_icon} title="README" onClick={() => this.createWindow("README", this.readme, { width: 500, height: 600 })} />
         </DesktopFiles>
       </main>
     )
