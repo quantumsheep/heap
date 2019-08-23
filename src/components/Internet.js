@@ -38,7 +38,7 @@ class Internet extends React.Component {
           </div>
         </div>
         <div className="internet-window-content">
-          <div style={{ padding: '4px', color: 'black' }}>{this.state.website}</div>
+          {this.state.website}
         </div>
       </div>
     )
