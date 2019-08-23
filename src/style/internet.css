@@ -31,7 +31,7 @@
     display: inline-block;
 }
 
-.internet-window-title-buttons-left{
+.internet-window-title-buttons-left {
     width: 75px;
     min-width: 75px;
     max-width: 75px;
@@ -39,7 +39,7 @@
     margin-left: 2px;
 }
 
-.internet-window-title-buttons-right{
+.internet-window-title-buttons-right {
     width: 50px;
     min-width: 50px;
     max-width: 50px;
@@ -80,10 +80,10 @@
     margin-left: 4px;
 }
 
-.internet-window-title-buttons-connect{
+.internet-window-title-buttons-connect {
     margin-left: 3px;
 }
 
-.internet-window-title-buttons-connect:focus{
-    fill:blue;
+.internet-window-title-buttons-connect:focus {
+    fill: blue;
 }
