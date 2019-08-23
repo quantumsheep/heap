@@ -25,6 +25,7 @@ class DesktopSelection extends React.Component {
     e.preventDefault()
 
     document.addEventListener('mousemove', this.onMouseMove)
+    document.addEventListener('mouseup', this.stopCapture)
 
     this.setState({
       capturing: 1,
@@ -38,6 +39,7 @@ class DesktopSelection extends React.Component {
     e.preventDefault()
 
     document.removeEventListener('mousemove', this.onMouseMove)
+    document.removeEventListener('mouseup', this.stopCapture)
 
     this.setState({
       capturing: false,
@@ -101,7 +103,7 @@ class DesktopSelection extends React.Component {
     }
 
     return (
-      <div {...others} style={{ height: '100%' }} onMouseDown={this.startCapture} onMouseUp={this.stopCapture}>
+      <div {...others} style={{ height: '100%' }} onMouseDown={this.startCapture}>
         {this.props.children}
         <div
           className="desktop-selection"
