@@ -53,8 +53,8 @@ class HeapWindow extends React.Component {
 
     this.setState({
       position: {
-        x: (document.body.clientWidth / 2) - (this.reference.resizable.clientWidth / 2) + (rand(-OFFSET, OFFSET)),
-        y: (document.body.clientHeight / 2) - (this.reference.resizable.clientHeight / 2) + (rand(-OFFSET, OFFSET)),
+        x: Math.min(document.body.clientWidth, Math.max(0, (document.body.clientWidth / 2) - (this.reference.resizable.clientWidth / 2) + (rand(-OFFSET, OFFSET)))),
+        y: Math.min(document.body.clientHeight, Math.max(0, (document.body.clientHeight / 2) - (this.reference.resizable.clientHeight / 2) + (rand(-OFFSET, OFFSET)))),
       },
     })
   }
