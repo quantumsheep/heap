@@ -13,8 +13,15 @@ class Internet extends React.Component {
 
     this.state = {
       connect_active: false,
-      website: <div></div>
+      website: this.defaultWebsite(),
+      webadress: 'store.heap',
     }
+  }
+
+  defaultWebsite = () => {
+    const Site = websites["store.heap"]
+    this.webadress = 'store.heap'
+    return <Site />
   }
 
   render() {
@@ -22,14 +29,14 @@ class Internet extends React.Component {
       <div className="internet">
         <div className="internet-window-title">
           <div className="internet-window-title-buttons-left">
-            <HomeButton className="internet-window-title-buttons-home" style={{ fill: "white", }} onClick={console.log("oui")} />
+            <HomeButton className="internet-window-title-buttons-home" style={{ fill: "white", }} onClick={() => this.setState({ website: this.defaultWebsite() })} />
             <LeftArrowButton className="internet-window-title-buttons-leftarrow" style={{ fill: "white", }} onClick={console.log("oui")} />
             <RightArrowButton className="internet-window-title-buttons-rightarrow" style={{ fill: "white", }} onClick={console.log("oui")} />
           </div>
-          <input onKeyDown={(e) => {
+          <input type="text" value={this.state.webadress} onChange={e => this.setState({ webadress: e.target.value })} onKeyDown={(e) => {
             if (e.key === "Enter") {
               const Site = websites[e.currentTarget.value]
-              this.setState({ website: Site ? <Site /> : <div>404</div> })
+              this.setState({ website: Site ? <Site /> : <div style={{ color: "black", textAlign: "center", marginTop: "20%" }}>404</div> })
             }
           }}></input>
           <div className="internet-window-title-buttons-right">

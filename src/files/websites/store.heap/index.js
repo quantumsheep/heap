@@ -1,6 +1,6 @@
 import React from 'react'
 import './css/site.css'
-import logo from './images/43306.png'
+import logo from './images/logo.png'
 
 function Store() {
   return (

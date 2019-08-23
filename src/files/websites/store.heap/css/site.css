@@ -19,6 +19,11 @@ nav {
     justify-content: flex-end;
 }
 
+.left-nav>img {
+    padding: 3px;
+    width: 25px;
+}
+
 .left-nav {
     display: flex;
     width: 20%;
