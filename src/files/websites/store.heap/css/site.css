@@ -36,7 +36,35 @@ nav {
 
 .index-content {
     color: black;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px;
+    text-align: center;
+}
+
+.articles{
+    margin-top: 15px;
+    display: flex;
+}
+
+.article{
+    width: 100px;
+    border: solid 1px #232323;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+.article>img{
+    width: 75px;
+}
+
+.article-content{
+    border: solid 1px #232323;
+    background-color: #232323;
+    color: #F2F2F2;
+    border-radius: 3px;
+}
+
+.article-content:hover{
+    cursor: pointer;
+    border: solid 1px #F2F2F2;
+    background-color: #404040;
 }

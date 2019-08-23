@@ -1,6 +1,7 @@
 import React from 'react'
 import './css/site.css'
 import logo from './images/logo.png'
+import trex from './images/trex.png'
 
 function Store() {
   return (
@@ -17,7 +18,15 @@ function Store() {
         </div>
       </nav>
       <div className='index-content'>
-        Bienvenu sur le store de Heap !
+        Welcome to the Heap store !
+        <div className="articles">
+          <div className="article">
+            <img alt="trex" src={trex}></img>
+            <div className="article-content">
+              T-Rex
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
