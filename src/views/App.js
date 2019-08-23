@@ -7,6 +7,7 @@ import DesktopIcon from '../components/DesktopIcon'
 import WindowManager from '../components/WindowManager'
 import HeapWindow from '../components/HeapWindow'
 import Notepad from '../components/Notepad'
+import Internet from '../components/Internet'
 import Directory from '../components/Directory'
 
 import internet_icon from '../ressources/icons/internet.png'
@@ -54,9 +55,9 @@ class App extends React.Component {
     })
   }
 
-  internet = async () => (
-    <div style={{ padding: '4px' }}>Welcome to the World Wide Web!</div>
-  )
+  internet = async () => {
+    return <Internet></Internet>
+  }
 
   readme = async () => {
     const { data } = await axios.get(file_readme)
@@ -92,6 +93,10 @@ class App extends React.Component {
               {
                 title: 'File',
                 children: [
+                  {
+                    title: 'Save',
+                    onClick: () => console.log("oui"),
+                  },
                   {
                     title: 'New file',
                     onClick: () => console.log('Creating new file...'),
