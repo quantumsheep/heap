@@ -3,6 +3,7 @@ import '../style/heap-window.css'
 
 import Draggable from 'react-draggable'
 import { Resizable } from 're-resizable'
+import Hotkeys from 'react-hot-keys'
 
 import CloseButton from './CloseButton'
 import HeapWindowControlDropdown from './HeapWindowControlDropdown'
@@ -17,7 +18,7 @@ class HeapWindow extends React.Component {
     icon: default_icon,
 
     dataKey: null,
-    onClose: (e, key) => { },
+    onClose: key => { },
 
     title: "Window",
     incrementIndex: () => { },
@@ -59,9 +60,8 @@ class HeapWindow extends React.Component {
     })
   }
 
-  onClose = (e, key) => {
-    e.preventDefault()
-    this.props.onClose(e, key)
+  close = () => {
+    this.props.onClose(this.props.dataKey)
   }
 
   onDrag = (e, position) => {
@@ -121,6 +121,15 @@ class HeapWindow extends React.Component {
     }
   }
 
+  /**
+   * @param {string} shortcut 
+   * @param {KeyboardEvent} e 
+   * @param {import('hotkeys-js').HotkeysEvent} handler 
+   */
+  shortcut = (shortcut, e, handler) => {
+    console.log(shortcut, e, handler)
+  }
+
   render() {
     return (
       <Draggable
@@ -140,27 +149,32 @@ class HeapWindow extends React.Component {
           minHeight={200}
           maxWidth="100%"
         >
-          <div className="heap-window-title-bar">
-            <img className="heap-window-title-icon" alt={this.props.title} src={this.props.icon} />
-            <div className="heap-window-title-title">{this.props.title}</div>
-            <div className="heap-window-title-buttons">
-              <CloseButton className="heap-window-title-buttons-close" onClick={e => this.onClose(e, this.props.dataKey)} />
+          <Hotkeys
+            keyName="w"
+            onKeyDown={this.shortcut}
+          >
+            <div className="heap-window-title-bar">
+              <img className="heap-window-title-icon" alt={this.props.title} src={this.props.icon} />
+              <div className="heap-window-title-title">{this.props.title}</div>
+              <div className="heap-window-title-buttons">
+                <CloseButton className="heap-window-title-buttons-close" onClick={e => this.close()} />
+              </div>
             </div>
-          </div>
-          <div className="heap-window-control">
-            {
-              this.props.control.map((control, i) => (
-                <HeapWindowControlDropdown key={`control-${i}`} title={control.title}>
-                  {
-                    control.children.map((child, j) => (
-                      <HeapWindowControlButton key={`control-${i}-${j}`} title={child.title} onClick={child.onClick || (() => { })} />
-                    ))
-                  }
-                </HeapWindowControlDropdown>
-              ))
-            }
-          </div>
-          <div onMouseDown={this.setOnTop} className="heap-window-body">{this.props.children}</div>
+            <div className="heap-window-control">
+              {
+                this.props.control.map((control, i) => (
+                  <HeapWindowControlDropdown key={`control-${i}`} title={control.title}>
+                    {
+                      control.children.map((child, j) => (
+                        <HeapWindowControlButton key={`control-${i}-${j}`} title={child.title} onClick={child.onClick || (() => { })} />
+                      ))
+                    }
+                  </HeapWindowControlDropdown>
+                ))
+              }
+            </div>
+            <div onMouseDown={this.setOnTop} className="heap-window-body">{this.props.children}</div>
+          </Hotkeys>
         </Resizable>
       </Draggable >
     )

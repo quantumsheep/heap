@@ -45,7 +45,7 @@ class App extends React.Component {
     this.setState({ windows })
   }
 
-  closeWindow = (e, key) => {
+  closeWindow = key => {
     this.setState({
       windows: this.state.windows.filter(component => component.key !== key),
     })
