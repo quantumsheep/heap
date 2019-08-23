@@ -1,0 +1,22 @@
+{
+  "type": "dir",
+  "children": {
+    "home": {
+      "type": "dir",
+      "children": {
+        "desktop": {
+          "type": "dir",
+          "children": {
+            "README": {
+              "type": "file",
+              "content": {
+                "type": "static",
+                "value": "README.md"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,18 +2,14 @@ import React from 'react'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
 
+import * as fs from '../utils/filesystem'
+
 import DesktopFiles from '../components/DesktopFiles'
 import DesktopIcon from '../components/DesktopIcon'
 import WindowManager from '../components/WindowManager'
 import HeapWindow from '../components/HeapWindow'
-import Notepad from '../components/Notepad'
-import Internet from '../components/Internet'
-import Directory from '../components/Directory'
 
-import internet_icon from '../ressources/icons/internet.png'
-import textfile_icon from '../ressources/icons/textfile.png'
-import directory_icon from '../ressources/icons/directory.png'
-import notepad_icon from '../ressources/icons/notepad.png'
+import softwares from '../softwares/list'
 
 import file_readme from '../files/README.md'
 
@@ -55,10 +51,6 @@ class App extends React.Component {
     })
   }
 
-  internet = async () => {
-    return <Internet></Internet>
-  }
-
   readme = async () => {
     const { data } = await axios.get(file_readme)
 
@@ -69,65 +61,36 @@ class App extends React.Component {
     )
   }
 
-  notepad = async () => {
-    return <Notepad></Notepad>
-  }
+  /**
+   * @param {React.MouseEvent<HTMLElement, MouseEvent>} e 
+   * @param {fs.FileSystemItem} item 
+   */
+  openFile = (e, item) => {
+    if (item.type === 'file') {
+      console.log(item.content)
+    } else if (item.type === 'program') {
+      const [title, id] = item.content.map(c => String.fromCharCode(c)).join('').split('\n')
 
-  directory = async () => {
-    return <Directory></Directory>
+      const Software = softwares[id].Software
+      this.createWindow(item.icon, title, () => <Software />, Software.control, Software.defaultSize || {})
+    }
   }
 
   render() {
+    const desktop_files = fs.get('/home/desktop')
+
     return (
       <main>
         <WindowManager>
           {this.state.windows}
         </WindowManager>
         <DesktopFiles>
-          <DesktopIcon icon={internet_icon} title="Internet" onClick={() => this.createWindow(internet_icon, "Internet", this.internet)} />
-          <DesktopIcon icon={textfile_icon} title="README" onClick={() => this.createWindow(textfile_icon, "README", this.readme, [], { width: 500, height: 600 })} />
-          <DesktopIcon
-            icon={notepad_icon}
-            title="Notepad"
-            onClick={() => this.createWindow(notepad_icon, "Notepad", this.notepad, [
-              {
-                title: 'File',
-                children: [
-                  {
-                    title: 'Save',
-                    onClick: () => console.log("oui"),
-                  },
-                  {
-                    title: 'New file',
-                    onClick: () => console.log('Creating new file...'),
-                  },
-                ],
-              },
-              {
-                title: 'Edit',
-                children: [
-                  {
-                    title: 'Cancel',
-                    onClick: () => { },
-                  },
-                ],
-              },
-              {
-                title: 'Help',
-                children: [
-                  {
-                    title: 'How to use',
-                    onClick: () => { },
-                  },
-                  {
-                    title: 'About',
-                    onClick: () => { },
-                  },
-                ],
-              },
-            ])}
-          />
-          <DesktopIcon icon={directory_icon} title="Directory" onClick={() => this.createWindow(directory_icon, "Directory", this.directory)} />
+          {
+            Object.keys(desktop_files.children).map(name => {
+              const file = desktop_files.children[name]
+              return <DesktopIcon key={name} title={name} icon={file.icon} onClick={e => this.openFile(e, file)} />
+            })
+          }
         </DesktopFiles>
       </main>
     )

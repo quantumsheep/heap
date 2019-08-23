@@ -1,13 +1,24 @@
 import React from 'react'
 import '../style/internet.css'
-import HomeButton from './HomeButton'
-import LeftArrowButton from './LeftArrowButton'
-import RightArrowButton from './RightArrowButton'
-import DownloadButton from './DownloadButton'
-import ConnectButton from './ConnectButton'
+import HomeButton from '../components/HomeButton'
+import LeftArrowButton from '../components/LeftArrowButton'
+import RightArrowButton from '../components/RightArrowButton'
+import DownloadButton from '../components/DownloadButton'
+import ConnectButton from '../components/ConnectButton'
 import websites from '../internet/websites'
 
-class Internet extends React.Component {
+import internet_icon from '../ressources/icons/internet.png'
+
+export const info = {
+  id: 'U9hwZ937YpzWals4',
+  name: 'Internet',
+  type: 'program',
+  icon: internet_icon,
+}
+
+export class Software extends React.Component {
+  static control = []
+
   constructor(props) {
     super(props)
 
@@ -51,5 +62,3 @@ class Internet extends React.Component {
     )
   }
 }
-
-export default Internet
