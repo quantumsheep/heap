@@ -10,7 +10,7 @@ import * as directory from './softwares/directory'
 import * as notepad from './softwares/notepad'
 import * as internet from './softwares/internet'
 
-import * as fs from './utils/filesystem'
+import * as fs from './kernel/filesystem'
 fs.init()
 
 if (!fs.get('/home/desktop/notepad.exe')) {

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../style/directory.css'
 
-import * as fs from '../utils/filesystem'
+import * as fs from '../kernel/filesystem'
 
 import directory_icon from '../ressources/icons/directory.png'
 import folder_icon from '../ressources/icons/directory.png'

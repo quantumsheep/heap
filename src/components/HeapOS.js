@@ -1,7 +1,7 @@
 import React from 'react'
 import '../style/heap-os.css'
 
-import * as fs from '../utils/filesystem'
+import * as fs from '../kernel/filesystem'
 
 import DesktopFiles from './DesktopFiles'
 import DesktopIcon from './DesktopIcon'
