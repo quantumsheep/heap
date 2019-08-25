@@ -59,7 +59,7 @@ class HeapOS extends React.Component {
       const [title, id] = item.content.map(c => String.fromCharCode(c)).join('').split('\n')
 
       const Software = softwares[id].Software
-      this.createWindow(item.icon, title, () => <Software />, Software.control, Software.defaultSize || {})
+      this.createWindow(item.icon, title, () => <Software env={this} />, Software.control, Software.defaultSize || {})
     }
   }
 

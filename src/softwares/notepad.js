@@ -48,6 +48,13 @@ export class Software extends React.Component {
     },
   ]
 
+  constructor(props) {
+    super(props)
+
+    /** @type {import('../components/HeapOS').default} */
+    this.env = this.props.env
+  }
+
   render() {
     return (
       <div className="notepad">
