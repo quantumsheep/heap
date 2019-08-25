@@ -1,6 +1,4 @@
 import React from 'react'
-import axios from 'axios'
-import ReactMarkdown from 'react-markdown'
 
 import * as fs from '../utils/filesystem'
 
@@ -10,8 +8,6 @@ import WindowManager from '../components/WindowManager'
 import HeapWindow from '../components/HeapWindow'
 
 import softwares from '../softwares/list'
-
-import file_readme from '../files/README.md'
 
 class App extends React.Component {
   constructor(props) {
@@ -49,16 +45,6 @@ class App extends React.Component {
     this.setState({
       windows: this.state.windows.filter(component => component.key !== key),
     })
-  }
-
-  readme = async () => {
-    const { data } = await axios.get(file_readme)
-
-    return (
-      <div style={{ padding: '4px' }}>
-        <ReactMarkdown source={data} escapeHtml={false} />
-      </div>
-    )
   }
 
   /**
