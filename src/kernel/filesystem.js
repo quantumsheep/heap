@@ -104,14 +104,21 @@ export function mkdir(path, parents = false) {
   do {
     const dir = parts[i]
 
-    const length = actual.children.push({
-      name: dir,
-      type: 'dir',
-      fullpath: `${actual.fullpath}/${dir}`,
-      children: [],
-    })
+    const original = actual.children.find(f => f.name === dir)
 
-    actual = actual.children[length - 1]
+    if (!original) {
+      const length = actual.children.push({
+        name: dir,
+        type: 'dir',
+        fullpath: `${actual.fullpath}/${dir}`,
+        children: [],
+      })
+
+      actual = actual.children[length - 1]
+    } else {
+      actual = original
+    }
+
     i++
   } while (parents && i < parts.length)
 
@@ -148,14 +155,21 @@ export function set(path, config = {}, parents = false) {
     return `Path not found: ${file_directory}`
   }
 
-  cd.children.push({
-    name: file,
-    fullpath: `${file_directory}/${file}`,
-    type: 'file',
-    icon: default_icon,
-    content: '',
-    ...config,
-  })
+  const original = cd.children.find(f => f.name === file)
+
+  if (original) {
+    original.icon = config.icon || file.icon
+    original.content = config.content
+  } else {
+    cd.children.push({
+      name: file,
+      fullpath: `${file_directory}/${file}`,
+      type: 'file',
+      icon: default_icon,
+      content: '',
+      ...config,
+    })
+  }
 
   save()
 
