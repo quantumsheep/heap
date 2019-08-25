@@ -89,7 +89,7 @@ class HeapOS extends React.Component {
 
   render() {
     const desktop_files = fs.get('/home/desktop')
-    fs.mkdir('/test/lol/bruh', true)
+
     return (
       <div className="heap-os">
         <WindowManager>
