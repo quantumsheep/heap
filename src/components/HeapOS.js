@@ -11,6 +11,8 @@ import HeapWindow from './HeapWindow'
 
 import softwares from '../softwares/list'
 
+import * as core from '../kernel/core'
+
 class HeapOS extends React.Component {
   constructor(props) {
     super(props)
@@ -19,6 +21,8 @@ class HeapOS extends React.Component {
       /** @type {HeapWindow[]} */
       windows: [],
     }
+
+    core.init()
   }
 
   /**
@@ -54,7 +58,6 @@ class HeapOS extends React.Component {
    * @param {string} target 
    */
   openFile = (item, target = null) => {
-    console.log(item)
     const extension = item.name.slice((item.name.lastIndexOf(".") - 1 >>> 0) + 2)
 
     if (extension === 'exe') {
@@ -84,7 +87,7 @@ class HeapOS extends React.Component {
 
   render() {
     const desktop_files = fs.get('/home/desktop')
-fs.mkdir('/test/lol/bruh', true)
+    fs.mkdir('/test/lol/bruh', true)
     return (
       <div className="heap-os">
         <WindowManager>
