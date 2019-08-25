@@ -53,13 +53,13 @@ export function init() {
  */
 export function get(path, last = false) {
   const parts = path.split('/')
-  const removed = parts.splice(0, 1)
+  parts.splice(0, 1)
+
+  if (parts[parts.length - 1] === '') {
+    parts.splice(-1, 1)
+  }
 
   let cd = tree
-
-  if (removed[0] === '/') {
-    cd = cd.children
-  }
 
   // eslint-disable-next-line
   for (const part of parts) {
