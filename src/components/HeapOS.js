@@ -49,10 +49,9 @@ class HeapOS extends React.Component {
   }
 
   /**
-   * @param {React.MouseEvent<HTMLElement, MouseEvent>} e 
    * @param {fs.FileSystemItem} item 
    */
-  openFile = (e, item) => {
+  openFile = item => {
     if (item.type === 'file') {
       console.log(item.content)
     } else if (item.type === 'program') {
@@ -75,7 +74,7 @@ class HeapOS extends React.Component {
           {
             Object.keys(desktop_files.children).map(name => {
               const file = desktop_files.children[name]
-              return <DesktopIcon key={name} title={name} icon={file.icon} onClick={e => this.openFile(e, file)} />
+              return <DesktopIcon key={name} title={name} icon={file.icon} onClick={e => this.openFile(file)} />
             })
           }
         </DesktopFiles>
