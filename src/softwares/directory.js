@@ -76,6 +76,28 @@ export class Software extends React.Component {
             </tr>
           </thead>
           <tbody>
+            <tr
+              key={`${this.state.directory}/.`}
+              className="directory-list-item"
+              onClick={() => this.updateDirectory(this.state.directory)}
+            >
+              <td></td>
+              <td>.</td>
+            </tr>
+            {
+              this.state.directory && this.state.directory !== '/'
+                ?
+                <tr
+                  key={`${this.state.directory}/..`}
+                  className="directory-list-item"
+                  onClick={() => this.updateDirectory(this.state.directory.split('/').slice(0, -1).join() || '/')}
+                >
+                  <td></td>
+                  <td>..</td>
+                </tr>
+                :
+                null
+            }
             {
               this.state.list.map(item => {
                 console.log(item)
