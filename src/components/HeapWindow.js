@@ -77,7 +77,6 @@ class HeapWindow extends React.Component {
    * @param {HTMLDivElement} ref 
    */
   onResize = (e, dir, ref) => {
-    console.log(dir)
     if (dir !== "topLeft" && dir !== "top" && dir !== "left" && dir !== "bottomLeft" && dir !== "topRight") return
 
     const position = this.state.position

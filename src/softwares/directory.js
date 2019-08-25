@@ -61,7 +61,6 @@ export class Software extends React.Component {
   }
 
   render() {
-    console.log(this.state.list)
     return (
       <div className="directory">
         <div className="directory-nav">
@@ -100,7 +99,6 @@ export class Software extends React.Component {
             }
             {
               this.state.list.map(item => {
-                console.log(item)
                 let icon = item.icon || default_icon
 
                 if (item.type === 'dir') {

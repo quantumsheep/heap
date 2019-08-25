@@ -63,7 +63,6 @@ export function get(path, last = false) {
 
   // eslint-disable-next-line
   for (const part of parts) {
-    console.log(cd)
     const file = cd.children.find(f => f.name === part)
 
     if (file) {
