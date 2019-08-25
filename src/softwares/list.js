@@ -7,3 +7,9 @@ export default {
   [notepad.info.id]: notepad,
   [directory.info.id]: directory,
 }
+
+export const softwares = {
+  directory,
+  internet,
+  notepad,
+}

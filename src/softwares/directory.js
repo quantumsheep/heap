@@ -24,8 +24,8 @@ export class Software extends React.Component {
     this.state = {
       directory: this.props.directory || '/',
 
-      /** @type {{[key: string]: fs.FileSystemItem}} */
-      list: {},
+      /** @type {fs.FileSystemItem[]} */
+      list: [],
     }
   }
 
@@ -46,7 +46,7 @@ export class Software extends React.Component {
   updateDirectory = (directory = this.state.directory) => {
     const files = fs.get(directory)
     this.setState({
-      list: files ? files.children : {},
+      list: files ? files.children : [],
       directory,
     })
   }
@@ -77,9 +77,8 @@ export class Software extends React.Component {
           </thead>
           <tbody>
             {
-              Object.keys(this.state.list).map(name => {
-                const item = this.state.list[name]
-
+              this.state.list.map(item => {
+                console.log(item)
                 let icon = item.icon || default_icon
 
                 if (item.type === 'dir') {
@@ -99,9 +98,9 @@ export class Software extends React.Component {
                     }}
                   >
                     <td>
-                      <img src={icon} alt={name} className="directory-list-item-icon" />
+                      <img src={icon} alt={item.name} className="directory-list-item-icon" />
                     </td>
-                    <td>{name}</td>
+                    <td>{item.name}</td>
                   </tr>
                 )
               })

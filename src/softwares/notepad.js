@@ -2,6 +2,8 @@ import React from 'react'
 import '../style/notepad.css'
 import notepad_icon from '../ressources/icons/notepad.png'
 
+import * as fs from '../kernel/filesystem'
+
 export const info = {
   id: '1uvUMbisLg7pod84',
   name: 'Notepad',
@@ -53,12 +55,24 @@ export class Software extends React.Component {
 
     /** @type {import('../components/HeapOS').default} */
     this.env = this.props.env
+
+    this.state = {
+      content: ''
+    }
+
+    if (this.props.target) {
+      const target = fs.get(this.props.target)
+
+      if (target.type === 'file') {
+        this.state.content = target.content
+      }
+    }
   }
 
   render() {
     return (
       <div className="notepad">
-        <textarea spellCheck={false}></textarea>
+        <textarea spellCheck={false} defaultValue={this.state.content}></textarea>
       </div>
     )
   }

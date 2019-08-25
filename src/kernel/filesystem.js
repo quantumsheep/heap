@@ -5,10 +5,10 @@ import default_icon from '../ressources/icons/default.png'
  * @typedef {object} FileSystemItem 
  * @property {string} name 
  * @property {string} type 
- * @property {string} icon 
  * @property {string} fullpath 
+ * @property {string=} icon 
  * @property {string|number[]=} content  
- * @property {{[key: string]: FileSystemItem}=} children 
+ * @property {FileSystemItem[]=} children 
  */
 
 /** @type {FileSystemItem} */
@@ -28,7 +28,7 @@ function map_paths(cd, actual = '') {
   if (cd.type === 'dir') {
     // eslint-disable-next-line
     for (let i in cd.children) {
-      map_paths(cd.children[i], `${actual}/${i}`)
+      map_paths(cd.children[i], `${actual}/${cd.children[i].name}`)
     }
   }
 }
@@ -63,8 +63,11 @@ export function get(path, last = false) {
 
   // eslint-disable-next-line
   for (const part of parts) {
-    if (cd.children[part]) {
-      cd = cd.children[part]
+    console.log(cd)
+    const file = cd.children.find(f => f.name === part)
+
+    if (file) {
+      cd = file
     } else {
       return last ? cd : null
     }
@@ -101,13 +104,14 @@ export function mkdir(path, parents = false) {
   do {
     const dir = parts[i]
 
-    actual.children[dir] = {
+    const length = actual.children.push({
+      name: dir,
       type: 'dir',
       fullpath: `${actual.fullpath}/${dir}`,
-      children: {},
-    }
+      children: [],
+    })
 
-    actual = actual.children[dir]
+    actual = actual.children[length - 1]
     i++
   } while (parents && i < parts.length)
 
@@ -144,14 +148,14 @@ export function set(path, config = {}, parents = false) {
     return `Path not found: ${file_directory}`
   }
 
-  cd.children[file] = {
+  cd.children.push({
     name: file,
     fullpath: `${file_directory}/${file}`,
     type: 'file',
     icon: default_icon,
     content: '',
     ...config,
-  }
+  })
 
   save()
 

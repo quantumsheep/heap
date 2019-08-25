@@ -2,6 +2,7 @@ import React from 'react'
 import '../style/heap-os.css'
 
 import * as fs from '../kernel/filesystem'
+import register from '../kernel/register'
 
 import DesktopFiles from './DesktopFiles'
 import DesktopIcon from './DesktopIcon'
@@ -50,21 +51,40 @@ class HeapOS extends React.Component {
 
   /**
    * @param {fs.FileSystemItem} item 
+   * @param {string} target 
    */
-  openFile = item => {
-    if (item.type === 'file') {
-      console.log(item.content)
-    } else if (item.type === 'program') {
+  openFile = (item, target = null) => {
+    console.log(item)
+    const extension = item.name.slice((item.name.lastIndexOf(".") - 1 >>> 0) + 2)
+
+    if (extension === 'exe') {
       const [title, id] = item.content.map(c => String.fromCharCode(c)).join('').split('\n')
 
       const Software = softwares[id].Software
       this.createWindow(item.icon, title, () => <Software env={this} />, Software.control, Software.defaultSize || {})
+    } else {
+      const association = register.file_association[extension]
+
+      if (!association) {
+        return
+      }
+
+      const software = fs.get(association)
+
+      if (!software) {
+        return
+      }
+
+      const [title, id] = software.content.map(c => String.fromCharCode(c)).join('').split('\n')
+
+      const Software = softwares[id].Software
+      this.createWindow(item.icon, title, () => <Software env={this} target={item.fullpath} />, Software.control, Software.defaultSize || {})
     }
   }
 
   render() {
     const desktop_files = fs.get('/home/desktop')
-
+fs.mkdir('/test/lol/bruh', true)
     return (
       <div className="heap-os">
         <WindowManager>
@@ -72,9 +92,8 @@ class HeapOS extends React.Component {
         </WindowManager>
         <DesktopFiles>
           {
-            Object.keys(desktop_files.children).map(name => {
-              const file = desktop_files.children[name]
-              return <DesktopIcon key={name} title={name} icon={file.icon} onClick={e => this.openFile(file)} />
+            desktop_files.children.map(file => {
+              return <DesktopIcon key={file.name} title={file.name} icon={file.icon} onClick={e => this.openFile(file)} />
             })
           }
         </DesktopFiles>

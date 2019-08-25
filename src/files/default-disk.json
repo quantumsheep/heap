@@ -1,22 +1,22 @@
 {
   "type": "dir",
-  "children": {
-    "home": {
+  "children": [
+    {
+      "name": "home",
       "type": "dir",
-      "children": {
-        "desktop": {
+      "children": [
+        {
+          "name": "desktop",
           "type": "dir",
-          "children": {
-            "README": {
+          "children": [
+            {
+              "name": "notes.txt",
               "type": "file",
-              "content": {
-                "type": "static",
-                "value": "README.md"
-              }
+              "content": "Hello world!"
             }
-          }
+          ]
         }
-      }
+      ]
     }
-  }
+  ]
 }
