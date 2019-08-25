@@ -52,7 +52,7 @@ export class Software extends React.Component {
    * @param {React.KeyboardEvent<HTMLInputElement>} e 
    */
   handlePathKeyDown = e => {
-    if (e.key == 'Enter') {
+    if (e.key === 'Enter') {
       this.updateDirectory()
     }
   }
