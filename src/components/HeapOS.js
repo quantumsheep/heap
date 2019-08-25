@@ -65,6 +65,8 @@ class HeapOS extends React.Component {
 
       const Software = softwares[id].Software
       this.createWindow(item.icon, title, () => <Software env={this} />, Software.control, Software.defaultSize || {})
+    } else if (extension === 'ln') {
+      return this.openFile(fs.get(item.content), target)
     } else {
       const association = register.file_association[extension]
 
