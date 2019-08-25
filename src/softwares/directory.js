@@ -94,7 +94,7 @@ export class Software extends React.Component {
                       if (item.type === 'dir') {
                         this.updateDirectory(item.fullpath)
                       } else {
-
+                        this.env.openFile(item)
                       }
                     }}
                   >
