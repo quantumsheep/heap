@@ -2,6 +2,15 @@ import React from 'react'
 import './css/site.css'
 import logo from './images/logo.png'
 import trex from './images/trex.png'
+import * as fs from '../../../kernel/filesystem'
+
+function DownloadTrex(){
+  fs.set("/home/download/trex.txt", {
+    type: 'file',
+    icon: trex,
+    content: 'i love caca',
+  }, true)
+}
 
 function Store() {
   return (
@@ -22,7 +31,7 @@ function Store() {
         <div className="articles">
           <div className="article">
             <img alt="trex" src={trex}></img>
-            <div className="article-content">
+            <div className="article-content" onClick={DownloadTrex()}>
               T-Rex
             </div>
           </div>

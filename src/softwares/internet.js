@@ -21,7 +21,7 @@ export class Software extends React.Component {
 
   constructor(props) {
     super(props)
-    
+
     /** @type {import('../components/HeapOS').default} */
     this.env = this.props.env
 
@@ -54,7 +54,7 @@ export class Software extends React.Component {
             }
           }}></input>
           <div className="internet-window-title-buttons-right">
-            <DownloadButton className="internet-window-title-buttons-download" style={{ fill: "white", }} onClick={console.log("oui")} />
+            <DownloadButton className="internet-window-title-buttons-download" />
             <ConnectButton className="internet-window-title-buttons-connect" style={{ fill: this.state.connect_active ? "lightblue" : "lightred" }} onClick={() => this.setState({ connect_active: !this.state.connect_active })} />
           </div>
         </div>
