@@ -19,7 +19,7 @@
         {
           "name": "download",
           "type": "dir",
-          "children":[]
+          "children": []
         }
       ]
     }
