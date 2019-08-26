@@ -13,6 +13,11 @@
               "name": "notes.txt",
               "type": "file",
               "content": "Hello world!"
+            },
+            {
+              "name": "secret",
+              "type": "file",
+              "content": "69420"
             }
           ]
         },

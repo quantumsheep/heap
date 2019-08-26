@@ -1,4 +1,5 @@
 import * as directory from '../softwares/directory'
+import * as memory_inspector from '../softwares/memory-inspector'
 import * as notepad from '../softwares/notepad'
 import * as internet from '../softwares/internet'
 
@@ -41,5 +42,11 @@ export function init() {
     type: 'symlink',
     icon: directory.info.icon,
     content: '/bin/directory.exe'
+  }, true)
+
+  fs.set('/bin/memory-inspector.exe', {
+    type: memory_inspector.info.type,
+    icon: memory_inspector.info.icon,
+    content: [...`${memory_inspector.info.name}\n${memory_inspector.info.id}`].map(c => c.charCodeAt(0))
   }, true)
 }

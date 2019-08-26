@@ -70,14 +70,14 @@ class HeapOS extends React.Component {
     } else {
       const association = register.file_association[extension]
 
-      if (!association) {
-        return
+      let software = null
+
+      if (association) {
+        software = fs.get(association)
       }
 
-      const software = fs.get(association)
-
       if (!software) {
-        return
+        software = fs.get(register.file_association['bin'])
       }
 
       const [title, id] = software.content.map(c => String.fromCharCode(c)).join('').split('\n')
