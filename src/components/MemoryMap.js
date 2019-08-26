@@ -4,7 +4,7 @@ import range from '../utils/range'
 
 class MemoryMap extends React.Component {
   static defaultProps = {
-    buffer: [0x00, 0x00]
+    buffer: []
   }
 
   render() {
