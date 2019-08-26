@@ -134,7 +134,6 @@ export function mkdir(path, parents = false) {
  * @param {string=} config.icon 
  * @param {string=} config.content 
  * @param {boolean} parents Recursively create directory 
- * @param {string} type 
  * @returns {string} 
  */
 export function set(path, config = {}, parents = false) {

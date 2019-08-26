@@ -89,7 +89,7 @@ export class Software extends React.Component {
                 <tr
                   key={`${this.state.directory}/..`}
                   className="directory-list-item"
-                  onClick={() => this.updateDirectory(this.state.directory.split('/').slice(0, -1).join() || '/')}
+                  onClick={() => this.updateDirectory(this.state.directory.split('/').slice(0, -1).join('/') || '/')}
                 >
                   <td></td>
                   <td>..</td>
