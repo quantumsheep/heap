@@ -1,136 +1,136 @@
 .internet {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
 .internet-window-title {
-    box-sizing: border-box;
-    margin: 2px;
-    width: 100%;
-    height: 25px;
-    display: flex;
-    justify-content: flex-start;
-    border-bottom: solid 1px white;
-    padding-left: 2px;
-    margin: 0;
-    padding-top: 2.5px;
-    padding-bottom: 2px;
+  box-sizing: border-box;
+  margin: 2px;
+  width: 100%;
+  height: 25px;
+  display: flex;
+  justify-content: flex-start;
+  border-bottom: solid 1px white;
+  padding-left: 2px;
+  margin: 0;
+  padding-top: 2.5px;
+  padding-bottom: 2px;
 }
 
 .internet-window-title>input {
-    margin-right: 10px;
-    width: 100%;
-    height: 100%;
-    border-radius: 1px;
-    border: 0;
+  margin-right: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+  border: 0;
 }
 
 .internet-window-title>* {
-    display: inline-block;
+  display: inline-block;
 }
 
 .internet-window-title-buttons-left {
-    width: 75px;
-    min-width: 75px;
-    max-width: 75px;
-    height: 100%;
-    margin-left: 2px;
+  width: 75px;
+  min-width: 75px;
+  max-width: 75px;
+  height: 100%;
+  margin-left: 2px;
 }
 
 .internet-window-title-buttons-right {
-    width: 50px;
-    min-width: 50px;
-    max-width: 50px;
-    height: 100%;
-    margin-left: 3px;
-    display: flex;
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  height: 100%;
+  margin-left: 3px;
+  display: flex;
 }
 
 .internet-window-title-buttons-left>svg, .internet-window-title-buttons-right>svg {
-    padding: 2.5px;
-    border-radius: 2px;
+  padding: 2.5px;
+  border-radius: 2px;
 }
 
 .internet-window-title-buttons-left>*:hover, .internet-window-title-buttons-right>svg:hover {
-    fill: black !important;
-    background-color: white !important;
-    color: white !important;
+  fill: black !important;
+  background-color: white !important;
+  color: white !important;
 }
 
 .internet-window-title-buttons-left>*, .internet-window-title-buttons-right>* {
-    width: 100%;
-    height: 100%;
-    width: auto;
-    fill: white;
-    transition: all 0.2s;
+  width: 100%;
+  height: 100%;
+  width: auto;
+  fill: white;
+  transition: all 0.2s;
 }
 
 .internet-window-title-buttons-left>*:hover, .internet-window-title-buttons-right>*:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .internet-window-content {
-    cursor: default;
-    height: 100%;
-    background-color: white;
-    margin: 3px;
+  cursor: default;
+  height: 100%;
+  background-color: white;
+  margin: 3px;
 }
 
 .internet-window-title-buttons-left, .internet-window-title-buttons-right {
-    margin-left: 4px;
+  margin-left: 4px;
 }
 
 .internet-window-title-buttons-connect {
-    margin-left: 3px;
+  margin-left: 3px;
 }
 
 .internet-window-title-buttons-connect:focus {
-    fill: blue;
+  fill: blue;
 }
 
 .download-button {
-    width: 19.5px;
-    height: 19.5px;
-    padding: 2.5px;
-    border-radius: 3px;
-    transition: all .3s;
+  width: 19.5px;
+  height: 19.5px;
+  padding: 2.5px;
+  border-radius: 3px;
+  transition: all .3s;
 }
 
 .download-button:hover {
-    fill: black !important;
-    background-color: white !important;
-    color: white !important;
+  fill: black !important;
+  background-color: white !important;
+  color: white !important;
 }
 
 .download-dropdown {
-    width: 100px;
-    height: 100px;
-    border: solid 1px white;
-    background-color: black;
-    position: absolute;
-    transition: all .3s;
-    right: 0px;
-    cursor: default;
+  width: 100px;
+  height: 100px;
+  border: solid 1px white;
+  background-color: black;
+  position: absolute;
+  transition: all .3s;
+  right: 0px;
+  cursor: default;
 }
 
 .download-dropdown-actions {
-    border-bottom: solid 1px white;
-    width: 100%;
-    height: 100%;
+  border-bottom: solid 1px white;
+  width: 100%;
+  height: 100%;
 }
 
 .download-dropdown-action>* {
-    margin: 2px 5px;
+  margin: 2px 5px;
 }
 
 .download-dropdown-actions>*:hover {
-    background-color: antiquewhite;
-    color: black;
-    cursor: pointer;
+  background-color: antiquewhite;
+  color: black;
+  cursor: pointer;
 }
 
 svg:hover {
-    fill: black !important;
+  fill: black !important;
 }
