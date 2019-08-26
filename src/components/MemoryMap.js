@@ -33,10 +33,10 @@ class MemoryMap extends React.Component {
           </thead>
           <tbody>
             {
-              range(Math.ceil(this.props.buffer.length / 16)).map(i => (
+              range(Math.ceil(this.props.buffer.length / 16)).map((i, _, arr) => (
                 <tr className="memory-map-row" key={`map${i}`}>
                   {
-                    range(16).map(j => (
+                    range(Math.min(16, this.props.buffer.length - i * 16)).map(j => (
                       <td key={`map${i}-${j}`}>{('0' + (this.props.buffer[j + (i * 16)] || 0).toString(16).toUpperCase()).substr(-2)}</td>
                     ))
                   }
