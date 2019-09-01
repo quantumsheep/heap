@@ -2,10 +2,13 @@
   border-collapse: collapse;
 }
 
+.memory-map td, .memory-map th {
+  padding: 4px;
+  text-align: center;
+}
+
 .memory-map-row td {
   cursor: pointer;
-  text-align: center;
-  padding: 4px;
 }
 
 .memory-map-row td:hover {
